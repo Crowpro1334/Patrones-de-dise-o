@@ -1,0 +1,30 @@
+//interfaz esperada por el cliente
+interface Target {
+void request();
+
+//clase que representa el objeto existente con una interface incompatible
+Class Adaptee{
+void specificRequest(){
+System.out.println("Adaptee´s specific request");
+}
+}
+//clase adaptadora que convierte la interfaz del adaptee en la interfaz target
+Class adapter implement Target{
+private adaptee adaptee;
+
+public Adapter(Adaptee adaptee){
+this.adaptee = adaptee;
+}
+@Override
+public void request(){
+adaptee.specificRequest();
+}
+}
+//Cliente que utiliza la interfaz Target
+Class client{
+public static  void main(String[ args){
+adaptee adaptee = new adaptee();
+Target adapter = new Adapter(adaptee);
+adapter.request();
+}
+}
