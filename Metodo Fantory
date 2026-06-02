@@ -1,0 +1,20 @@
+class Alumno implement Usuario {
+ public String getPermisos(){
+  return "Permisos basicos"; 
+ }
+}
+class Profesor implement Usuario {
+public String getPermisos(){
+return "Permisos Avanzados";
+}
+}
+class UsuarioFactory {
+public static Usuario crearUsuario(String tipo){
+if (tipo.equalsIgnoreCase("Alumno")){
+return new Alumno();
+} else if(tipo.equalsIgnoreCase("Profesor")){
+return new Profesor();
+}
+throw IllegalArgumentException("tipo no valido");
+}
+}
