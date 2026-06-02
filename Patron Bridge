@@ -1,0 +1,56 @@
+// Interfaz que representa la implementación de la abstracción
+interface Implementor {
+    void operationImpl();
+}
+
+// Clase que implementa la interfaz Implementor
+class ConcreteImplementorA implements Implementor {
+    @Override
+    public void operationImpl() {
+        System.out.println("ConcreteImplementorA operation");
+    }
+}
+
+// Otra clase que implementa la interfaz Implementor
+class ConcreteImplementorB implements Implementor {
+    @Override
+    public void operationImpl() {
+        System.out.println("ConcreteImplementorB operation");
+    }
+}
+// Clase que representa la abstracción
+abstract class Abstraction {
+    protected Implementor implementor;
+
+    public Abstraction(Implementor implementor) {
+        this.implementor = implementor;
+    }
+
+    abstract void operation();
+}
+
+// Implementación específica de la abstracción
+class RefinedAbstraction extends Abstraction {
+    public RefinedAbstraction(Implementor implementor) {
+        super(implementor);
+    }
+
+    @Override
+    void operation() {
+        System.out.println("RefinedAbstraction operation");
+        implementor.operationImpl();
+    }
+}
+
+// Cliente que utiliza la abstracción
+class Client {
+    public static void main(String[] args) {
+        Implementor implementorA = new ConcreteImplementorA();
+        Abstraction abstraction = new RefinedAbstraction(implementorA);
+        abstraction.operation();
+
+        Implementor implementorB = new ConcreteImplementorB();
+        abstraction = new RefinedAbstraction(implementorB);
+        abstraction.operation();
+    }
+}
